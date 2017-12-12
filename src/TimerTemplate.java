@@ -23,5 +23,6 @@ public class TimerTemplate {
 
     out.write(input.toString());
     executor.execute(runner);
+    out.close();
   }
 }
