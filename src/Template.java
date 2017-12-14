@@ -1,7 +1,7 @@
 public class Template {
   public static void main(String[] args) {
-    Kattio io = new Kattio(System.in);
+    Kattio io = new Kattio(System.in, System.out);
 
-    io.close();
+    io.flush();
   }
 }
