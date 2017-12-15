@@ -1,9 +1,8 @@
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
+import java.io.PrintWriter;
 import java.util.Random;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -18,13 +17,10 @@ public class TimerTemplate {
           executor.shutdown();
         };
     System.setIn(new PipedInputStream());
-    OutputStreamWriter out =
-        new OutputStreamWriter(new PipedOutputStream((PipedInputStream) System.in));
-    StringBuilder input = new StringBuilder();
+    PrintWriter out = new PrintWriter(new PipedOutputStream((PipedInputStream) System.in));
     Random random = new Random();
-
-    out.write(input.toString());
     executor.execute(runner);
+
     out.close();
   }
 }
